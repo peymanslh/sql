@@ -1,0 +1,9 @@
+.summary {
+  display: flex;
+  justify-content: space-between;
+  div {
+    color: var(--text-color);
+    margin: 20px 0 16px 0;
+    font-size: 0.9rem;
+  }
+}

@@ -1,0 +1,54 @@
+// #242938
+:root {
+  --font-family-heading: 'Libre Caslon Text', 'Pridi', serif;
+  --font-family-paragraph: 'Pridi', serif;
+  --font-family-monospace: 'IBM Plex Mono', monospace;
+  --base-color: #191d28;
+  --base-offset-color: #eaeaea;
+  --secondary-color: #506477;
+  --highlight-color: #e82549;
+  --heading-color: #ffffff;
+  --text-color: #e4f0fb;
+}
+
+$breakpoints: (
+  'small': 767px,
+  'medium': 992px,
+  'large': 1200px,
+);
+
+@import 'normalize';
+@import 'breakpoints';
+@import 'header';
+@import 'footer';
+@import 'content';
+@import 'intro';
+@import 'summary';
+@import 'author';
+@import 'pagination';
+@import 'pygments/github';
+
+html, body {
+  box-sizing: border-box;
+}
+
+body {
+  background: var(--base-color);
+  font-family: var(--font-family-paragraph);
+  color: var(--text-color);
+  margin: 0;
+  padding: 30px;
+  overflow-x: hidden;
+  @include breakpoint('small') {
+    padding: 50px;
+  }
+  &.frame {
+    min-height: 100vh;
+    border: 18px solid var(--highlight-color);
+  }
+}
+
+.wrapper {
+  max-width: 800px;
+  margin: 0 auto;
+}

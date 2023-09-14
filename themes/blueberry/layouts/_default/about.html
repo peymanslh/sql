@@ -1,0 +1,21 @@
+{{ define "header_css" }}{{ end }}
+{{ define "body_classes" }}page-blog-single{{ end }}
+
+{{ define "main" }}
+<div class="blog">
+  {{ if .Site.Params.showAuthorOnPosts }}
+  {{ partial "author.html" . }}
+  {{ end }}
+  <div class="intro">
+    <h1>{{ .Title }}{{ if .Site.Params.addDot }}<span class="dot">.</span>{{ end }}</h1>
+    <div class="content">
+      <div class="vertical-content">
+        {{ if .Params.image }}
+        <img src="{{ .Params.image | relURL }}" />
+        {{ end }}
+        {{ .Content }}
+      </div>
+    </div>
+  </div>
+</div>
+{{ end }}

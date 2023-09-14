@@ -1,0 +1,21 @@
+.intro {
+  margin-bottom: 70px;
+  margin-top: 70px;
+  h1 {
+    strong {
+      color: var(--highlight-color);
+    }
+  }
+  .read-more {
+    font-size: 20px;
+    line-height: 26px;
+    font-weight: bold;
+    @include breakpoint('small') {
+      font-size: 22px;
+      line-height: 32px;
+    }
+  }
+  img {
+    max-width: 100%;
+  }
+}

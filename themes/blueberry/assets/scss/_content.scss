@@ -1,0 +1,163 @@
+a {
+  color: var(--highlight-color);
+  text-decoration: none;
+  &:hover {
+    text-decoration: underline;
+  }
+}
+
+h1 {
+  font-size: 1.5rem;
+}
+h2 {
+  font-size: 1.3rem;
+}
+h3 {
+  font-size: 1.1rem;
+}
+h1,
+h2,
+h3 {
+  color: var(--heading-color);
+  font-family: var(--font-family-heading);
+  font-weight: 800;
+  a {
+    color: var(--heading-color);
+  }
+}
+p {
+  color: var(--text-color);
+  font-family: var(--font-family-paragraph);
+  font-weight: 400;
+  font-size: 1.1rem;
+}
+
+
+.content {
+  h1, h2, h3 {
+    margin-top: 50px;
+    margin-bottom: 20px;
+  }
+  p {
+    margin: 0;
+    padding: 0;
+    margin-bottom: 20px;
+  }
+  a {
+    text-decoration: underline;
+  }
+  blockquote {
+    border-left: 5px solid var(--highlight-color);
+    margin: 30px 0;
+    padding: 20px;
+  }
+  blockquote p {
+    font-size: 20px;
+    display: inline;
+    color: var(--color-base-text);
+  }
+  img {
+    margin: 40px 0 40px 0;
+    max-width: 100%;
+    height: auto;
+  }
+  figure {
+    margin: 2.6rem 0 1.18rem;
+    img {
+      margin: 0;
+    }
+    figcaption {
+      margin-top: 10px;
+      h4 {
+        margin: 0;
+        font-size: 1rem;
+        font-weight: bold;
+      }
+      p {
+        margin: 0;
+      }
+    }
+  }
+  code,
+  pre {
+    font-family: var(--font-family-monospace);
+  }
+  .highlight {
+    border-radius: 8px;
+    pre {
+      border-radius: 3px;
+      padding: 20px;
+      overflow: auto;
+      font-family: var(--font-family-monospace);
+
+      code {
+        background-color: transparent !important;
+        border-radius: none;
+        font-size: 0.9rem !important;
+        font-weight: 500;
+      }
+    }
+  }
+
+  code {
+    background-color: rgba(255, 255, 255, 0.05);
+    padding: 0px 4px 3px 4px;
+    border-radius: 3px;
+    font-size: 1rem;
+  }
+}
+
+.dot {
+  color: var(--highlight-color);
+  font-size: 3rem;
+  padding-left: 5px;
+  font-family: var(--font-family-paragraph);
+}
+
+.row {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  width: 100%;
+}
+
+.column {
+  display: flex;
+  flex-direction: column;
+  flex: 100%;
+}
+
+@include breakpoint('small') {
+  .column {
+    flex: 50%;
+  }
+}
+
+
+table {
+  width: 100%;
+  text-align: left;
+  border-collapse: collapse;
+  margin-bottom: 20px;
+  font-family: var(--font-family-monospace);
+  font-size: 0.9rem;
+
+  thead {
+    th,
+    td {
+      border-bottom: 2px solid var(--secondary-color);
+      padding: 5px 10px;
+    }
+  }
+  tbody {
+    th,
+    td {
+      border-bottom: 1px dotted var(--secondary-color);
+      padding: 5px 10px;
+    }
+  }
+}
+
+.blog {
+  margin-bottom: 100px;
+}
