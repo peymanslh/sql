@@ -1,4 +1,4 @@
-baseURL = "https://peyman.blog/"
+baseURL = "https://peyman.blog/sql/"
 languageCode = "en-us"
 title = "SQL by example"
 themesDir = "themes"
