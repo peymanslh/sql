@@ -14,7 +14,7 @@
 
   {{ if .Site.Params.showPostsOnHomepage }}
   {{ $paginator := .Paginate (where .Site.RegularPages "Type" "posts") }}
-    {{ range $paginator.Pages }}
+    {{ range $paginator.Pages.ByDate }}
       {{ .Render "summary" }}
     {{ end }}
     {{ template "_internal/pagination.html" . }}
