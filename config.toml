@@ -4,6 +4,9 @@ title = "SQL by example"
 themesDir = "themes"
 theme = "blueberry"
 
+RelativeURLs = true
+CanonifyURLs = true
+
 pygmentsCodeFences = true
 pygmentsCodefencesGuessSyntax = true
 pygmentsUseClasses = false
