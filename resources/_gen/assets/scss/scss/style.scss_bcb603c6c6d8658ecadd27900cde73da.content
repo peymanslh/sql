@@ -252,6 +252,27 @@ ul.pagination {
     ul.pagination li:last-of-type a {
       border-right: 2px solid var(--heading-color); }
 
+.nav-tabs {
+  display: flex;
+  justify-content: space-evenly;
+  text-align: center;
+  margin-bottom: 20px; }
+  .nav-tabs .nav-item {
+    display: block;
+    padding: 5px 20px;
+    border-bottom: 1px solid var(--secondary-color);
+    color: var(--secondary-color);
+    text-decoration: none;
+    transition: all 0.3s ease; }
+    .nav-tabs .nav-item.active {
+      color: var(--highlight-color);
+      border-bottom: 1px solid var(--highlight-color); }
+
+.tab-content .tab-pane {
+  display: none; }
+  .tab-content .tab-pane.active {
+    display: block; }
+
 html, body {
   box-sizing: border-box; }
 

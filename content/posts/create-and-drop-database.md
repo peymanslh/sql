@@ -3,9 +3,10 @@ title: "Create and Drop Database"
 date: 2023-09-17T00:50:10+03:30
 ---
 
-## PostgreSQL
-### Create Database
-With `CREATE DATABASE` statement you can create a new database in PostgreSQL.
+## Create Database
+With `CREATE DATABASE` statement you can create a new database.
+{{< tabs tabTotal="1" >}}
+{{< tab tabName="PostgreSQL" >}}
 ```sql
 -- create a database called coffee
 CREATE DATABASE coffee; 
@@ -13,8 +14,14 @@ CREATE DATABASE coffee;
 You can see more options to create a database in 
 [PostgreSQL docs](https://www.postgresql.org/docs/current/sql-createdatabase.html)
 
-### Remove database
+{{< /tab >}}
+{{< /tabs >}}
+
+
+## Remove database
 Use `DROP DATABASE` statement to remove a database.
+{{< tabs tabTotal="1" >}}
+{{< tab tabName="PostgreSQL" >}}
 ```sql
 -- drop a database called coffe
 DROP DATABASE coffee;
@@ -26,4 +33,7 @@ DROP DATABASE coffee FORCE;
 DROP DATABASE IF EXISTS coffee;
 ```
 [Drop database in PostgreSQL docs](https://www.postgresql.org/docs/current/sql-dropdatabase.html)
+
+{{< /tab >}}
+{{< /tabs >}}
 

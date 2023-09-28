@@ -1,0 +1,29 @@
+.nav-tabs {
+  display: flex;
+  justify-content: space-evenly;
+  text-align: center;
+  margin-bottom: 20px;
+
+  .nav-item {
+    display: block;
+    padding: 5px 20px;
+    border-bottom: 1px solid var(--secondary-color);
+    color: var(--secondary-color);
+    text-decoration: none;
+    transition: all 0.3s ease;
+
+    &.active {
+      color: var(--highlight-color);
+      border-bottom: 1px solid var(--highlight-color);
+    }
+  }
+}
+.tab-content {
+  .tab-pane {
+    display: none;
+    &.active {
+      display: block;
+    }
+  }
+
+}

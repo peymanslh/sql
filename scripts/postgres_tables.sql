@@ -21,24 +21,24 @@ CREATE TABLE products (
   name VARCHAR NOT NULL,
   company VARCHAR,
   price INT,
-  category INT NOT NULL,
+  category_id INT NOT NULL,
   description TEXT,
 
-  FOREIGN KEY (category) REFERENCES product_categories (id)
+  FOREIGN KEY (category_id) REFERENCES product_categories (id)
 );
 
 CREATE TABLE orders (
   id serial PRIMARY KEY,
   created_at TIMESTAMP,
   order_code VARCHAR NOT NULL,
-  product INT NOT NULL,
-  user INT NOT NULL,
+  product_id INT NOT NULL,
+  user_id INT NOT NULL,
   quantity INT,
   total_price INT,
   delivered BOOLEAN,
 
-  FOREIGN KEY (product) REFERENCES products (id),
-  FOREIGN KEY (user) REFERENCES users (id)
+  FOREIGN KEY (product_id) REFERENCES products (id),
+  FOREIGN KEY (user_id) REFERENCES users (id)
 );
 
 CREATE TABLE user_logs (

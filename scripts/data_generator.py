@@ -1,52 +1,10 @@
-# This script genrates random data for an eCommerce website
-#
-# Requirements:
-# - Faker==19.6.1
-# - psycopg==3.1.10
-#
-
-import sys
 from typing import Any
 from datetime import datetime, timedelta
 
 from faker import Faker
-import psycopg
 
-dtype = list[dict[str, Any]]
-
+ListOfDicts = list[dict[str, Any]]
 faker = Faker()
-
-# Change these numbers if you want more data
-NUMBER_OF_PRODUCTS = 100
-NUMBER_OF_USERS = 150
-NUMBER_OF_ORDERS = 500
-NUMBER_OF_LOGS = 40000
-
-
-def main():
-    if len(sys.argv) < 2:
-        raise Exception("Please pass database connection string")
-    con_str = sys.argv[1]
-    users = gen_users(NUMBER_OF_USERS)
-    categories = gen_product_categories()
-    products = gen_products(NUMBER_OF_PRODUCTS)
-    orders = gen_orders(NUMBER_OF_ORDERS, users, products)
-    logs = gen_user_log(NUMBER_OF_LOGS, users)
-
-    insert_to_sql(con_str, users)
-    from pprint import pp
-    pp(logs)
-
-
-def insert_to_sql(con_str: str, data: dtype):
-    with psycopg.connect(con_str) as conn:
-        with conn.cursor() as cur:
-            cur.execute("""
-                CREATE TABLE test (
-                    id serial PRIMARY KEY,
-                    num integer,
-                    data text)
-                """)
 
 
 def get_email(emails_list) -> str:
@@ -56,7 +14,7 @@ def get_email(emails_list) -> str:
             return email
 
 
-def gen_users(count: int) -> dtype:
+def gen_users(count: int) -> ListOfDicts:
     result = []
     emails_list = []
     for i in range(1, count + 1):
@@ -77,7 +35,7 @@ def gen_users(count: int) -> dtype:
     return result
 
 
-def gen_product_categories() -> dtype:
+def gen_product_categories() -> ListOfDicts:
     paints = ["Oil Paint", "Alkyd Paint", "Spray Paint",]
     result = []
     for key, value in enumerate(paints):
@@ -102,7 +60,7 @@ def get_product_code(codes_list) -> str:
             return code
 
 
-def gen_products(count: int) -> dtype:
+def gen_products(count: int) -> ListOfDicts:
     companies = gen_companies(count)
     categories = gen_product_categories()
     result = []
@@ -118,7 +76,7 @@ def gen_products(count: int) -> dtype:
             "name": f"{faker.safe_color_name()} paint",
             "company": companies[faker.pyint(max_value=len(companies) - 1)],
             "price": faker.pyint(min_value=200, max_value=500),
-            "category": categories[faker.pyint(max_value=len(categories) - 1)]["id"],
+            "category_id": categories[faker.pyint(max_value=len(categories) - 1)]["id"],
             "description": faker.text(max_nb_chars=100),
         })
     return result
@@ -131,7 +89,7 @@ def get_order_code(codes_list) -> str:
             return code
 
 
-def gen_orders(count: int, users: dtype, products: dtype) -> dtype:
+def gen_orders(count: int, users: ListOfDicts, products: ListOfDicts) -> ListOfDicts:
     result = []
     codes_list = []
     for i in range(1, count + 1):
@@ -144,8 +102,8 @@ def gen_orders(count: int, users: dtype, products: dtype) -> dtype:
             "id": i,
             "created_at": faker.date_time_between(start_date=u["datetime_joined"]),
             "order_code": code,
-            "product": p["id"],
-            "user": u["id"],
+            "product_id": p["id"],
+            "user_id": u["id"],
             "quantity": q,
             "total_price": q * p["price"],
             "delivered": faker.pybool(95),
@@ -153,7 +111,7 @@ def gen_orders(count: int, users: dtype, products: dtype) -> dtype:
     return result
 
 
-def gen_user_log(count: int, users: dtype) -> dtype:
+def gen_user_log(count: int, users: ListOfDicts) -> ListOfDicts:
     result = []
     for i in range(1, count + 1):
         u = users[faker.pyint(max_value=len(users) - 1)]
@@ -166,8 +124,3 @@ def gen_user_log(count: int, users: dtype) -> dtype:
             "user_agent": faker.user_agent(),
         })
     return result
-
-
-if __name__ == "__main__":
-  main()
-
