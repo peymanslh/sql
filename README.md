@@ -6,7 +6,7 @@ Run server: `hugo server`.
 Create a new post: `hugo new --kind post posts/<post-name>.md`
 
 ## TODO
-- [ ] SELECT
+- [x] SELECT
 - [ ] WHERE
 - [ ] INSERT
 - [ ] UPDATE
