@@ -10,7 +10,7 @@ Create a new post: `hugo new --kind post posts/<post-name>.md`
 - [x] WHERE
 - [x] INSERT
 - [x] UPDATE
-- [ ] DELETE
+- [x] DELETE
 - [ ] ORDER BY
 - [ ] GROUP BY
 - [ ] AND, OR, NOT
