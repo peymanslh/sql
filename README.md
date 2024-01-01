@@ -7,8 +7,8 @@ Create a new post: `hugo new --kind post posts/<post-name>.md`
 
 ## TODO
 - [x] SELECT
-- [ ] WHERE
-- [ ] INSERT
+- [x] WHERE
+- [x] INSERT
 - [ ] UPDATE
 - [ ] DELETE
 - [ ] ORDER BY

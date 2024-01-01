@@ -3,7 +3,6 @@ title: "Select"
 date: 2023-12-26T23:41:25+03:30
 ---
 
-## Select
 By using `SELECT` statement we can reterive data from database.
 Here is some examples of fetching data with `SELECT`.
 
