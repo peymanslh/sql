@@ -1,15 +1,16 @@
 ---
 title: "Select"
 date: 2023-12-26T23:41:25+03:30
+tags:
+- query
+- postgresql
 ---
 
 By using `SELECT` statement we can reterive data from database.
 Here is some examples of fetching data with `SELECT`.
 
-{{< tabs tabTotal="1" >}}
-{{< tab tabName="PostgreSQL" >}}
-Select first_name, last_name and email columns from users table
 ```sql
+-- select first_name, last_name and email columns from users table
 SELECT first_name, last_name, email FROM users;
 ```
 Output:
@@ -22,9 +23,9 @@ Output:
 | Brandon     | Jenkins     | lrichardson@meadows-hodges.biz        |
 ...
 ```
-Select all columns from users table
 
 ```sql
+-- select all columns from users table
 SELECT * FROM users;
 ```
 Output:
@@ -37,9 +38,4 @@ Output:
 | 3   | 2023-01-30 08:00:52 | Brandon     | Jenkins     | lrichardson@meadows-hodges.biz        | Pinedamouth             | True   |
 ...
 ```
-
-Read more about Select on 
 [PostgreSQL docs](https://www.postgresql.org/docs/current/sql-select.html)
-
-{{< /tab >}}
-{{< /tabs >}}

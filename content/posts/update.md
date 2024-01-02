@@ -1,12 +1,13 @@
 ---
 title: "Update"
 date: 2024-01-01T20:11:38+03:30
+tags:
+- modify
+- postgresql
 ---
 By choosing one or multiple columns and add a condition we can update
 existing rows.
 
-{{< tabs tabTotal="1" >}}
-{{< tab tabName="PostgreSQL" >}}
 ```sql
 -- set active column of all rows in `users` table
 -- when you don't provide a where condition with your update it will
@@ -35,9 +36,4 @@ SET
 WHERE
   id = 45;
 ```
-
-Read more about Update on 
 [PostgreSQL docs](https://www.postgresql.org/docs/current/sql-update.html)
-
-{{< /tab >}}
-{{< /tabs >}}

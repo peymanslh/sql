@@ -1,11 +1,11 @@
 ---
 title: "Delete"
 date: 2024-01-01T20:40:45+03:30
+tags:
+- manage
+- postgresql
 ---
 With `DELETE` we can delete one or multiple rows from a table.
-
-{{< tabs tabTotal="1" >}}
-{{< tab tabName="PostgreSQL" >}}
 ```sql
 -- when you don't provide a where condition with your delete it will
 -- delete all rows in your table
@@ -18,9 +18,4 @@ DELETE FROM
 WHERE
   user_id = 12;
 ```
-
-Read more about Delete on 
 [PostgreSQL docs](https://www.postgresql.org/docs/current/sql-delete.html)
-
-{{< /tab >}}
-{{< /tabs >}}

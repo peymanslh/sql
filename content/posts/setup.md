@@ -1,7 +1,9 @@
 ---
 title: "Setup"
 date: 2023-09-15T03:12:13+03:30
-draft: false
+tags:
+- intro
+- postgresql
 ---
 
 If you want to run the examples in the following posts, you can 

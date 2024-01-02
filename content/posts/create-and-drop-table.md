@@ -1,13 +1,12 @@
 ---
 title: "Create and Drop Table"
 date: 2023-09-17T01:06:01+03:30
+tags:
+- manage
+- postgresql
 ---
-
 ### Create table
 By using `CREATE TABLE` statement you can create a new table.
-
-{{< tabs tabTotal="1" >}}
-{{< tab tabName="PostgreSQL" >}}
 ```sql
 -- Create a table called users
 CREATE TABLE users (
@@ -26,17 +25,11 @@ CREATE TABLE users (
       REFERENCES groups (group_id) -- set foreign key on another table
 );
 ```
-[PostgreSQL create table](https://www.postgresql.org/docs/16/sql-createtableas.html)  
-[PostgreSQL data types](https://www.postgresql.org/docs/8.1/datatype.html#DATATYPE-TABLE)  
-
-{{< /tab >}}
-{{< /tabs >}}
+[PostgreSQL docs - create table](https://www.postgresql.org/docs/16/sql-createtableas.html)  
+[PostgreSQL docs - data types](https://www.postgresql.org/docs/8.1/datatype.html#DATATYPE-TABLE)  
 
 ## Remove table
 Use `DROP TABLE` to destroy a table.
-
-{{< tabs tabTotal="1" >}}
-{{< tab tabName="PostgreSQL" >}}
 ```sql
 -- drop table coffee
 DROP TABLE coffee;
@@ -47,7 +40,4 @@ DROP TABLE IF EXISTS coffee;
 -- Also drop objects that depend on this table like views
 DROP TABLE coffee CASCADE;
 ```
-[PostgreSQL docs for more info.](https://www.postgresql.org/docs/16/sql-droptable.html)  
-
-{{< /tab >}}
-{{< /tabs >}}
+[PostgreSQL docs](https://www.postgresql.org/docs/16/sql-droptable.html)  

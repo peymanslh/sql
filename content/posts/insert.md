@@ -1,11 +1,11 @@
 ---
 title: "Insert"
 date: 2024-01-01T19:43:54+03:30
+tags:
+- modify
+- postgresql
 ---
 We can insert new rows into our tables by using `INSERT` statement.
-
-{{< tabs tabTotal="1" >}}
-{{< tab tabName="PostgreSQL" >}}
 ```sql
 -- insert new row(user) into users table
 INSERT INTO
@@ -29,8 +29,4 @@ VALUES
 RETURNING *;
 ```
 
-Read more about Insert on 
 [PostgreSQL docs](https://www.postgresql.org/docs/current/sql-insert.html)
-
-{{< /tab >}}
-{{< /tabs >}}

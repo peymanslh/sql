@@ -1,7 +1,9 @@
 ---
 title: "Sample Database Structure"
 date: 2023-09-15T16:23:58+03:30
-draft: false
+tags:
+- intro
+- postgresql
 ---
 
 This is an overview of sample database that you imported from [setup](/posts/setup/) post.

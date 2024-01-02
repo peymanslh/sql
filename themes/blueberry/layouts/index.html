@@ -12,6 +12,13 @@
     <div class="intro-content">{{ .Content }}</div>
   </div>
 
+  <h3>Featured Posts</h3>
+  <ul>
+    {{ range .Site.Taxonomies.tags.postgresql }}
+      <li><a href="{{ .Page.RelPermalink }}">{{ .Page.Title }}</a></li>
+    {{ end }}
+  </ul>
+
   {{ if .Site.Params.showPostsOnHomepage }}
   {{ $paginator := .Paginate (where .Site.RegularPages "Type" "posts") }}
     {{ range $paginator.Pages.ByDate }}
