@@ -2,7 +2,7 @@
 title: "Delete"
 date: 2024-01-01T20:40:45+03:30
 tags:
-- manage
+- modify
 - postgresql
 ---
 With `DELETE` we can delete one or multiple rows from a table.

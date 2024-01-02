@@ -109,6 +109,18 @@ p {
   font-weight: 400;
   font-size: 1.1rem; }
 
+.post-tags {
+  margin-left: 0;
+  padding-left: 0; }
+  .post-tags li {
+    list-style: none;
+    display: inline-block; }
+    .post-tags li a {
+      color: #d2d1d1;
+      background-color: #282e40;
+      padding: 0 7px;
+      font-size: 12px; }
+
 .content h1, .content h2, .content h3 {
   margin-top: 50px;
   margin-bottom: 20px; }
@@ -173,10 +185,11 @@ p {
   font-size: 1rem; }
 
 .dot {
-  color: var(--highlight-color);
-  font-size: 3rem;
-  padding-left: 5px;
-  font-family: var(--font-family-paragraph); }
+  background-color: var(--highlight-color);
+  width: 7px;
+  height: 7px;
+  display: inline-block;
+  margin-left: 6px; }
 
 .row {
   display: flex;
@@ -235,6 +248,14 @@ table {
     color: var(--text-color);
     margin: 20px 0 16px 0;
     font-size: 0.9rem; }
+
+.home-posts {
+  margin-bottom: 50px; }
+  .home-posts li {
+    list-style: none; }
+    .home-posts li a {
+      color: #FFFFFF;
+      font-size: 18px; }
 
 ul.pagination {
   margin: 0;

@@ -32,6 +32,20 @@ p {
   font-size: 1.1rem;
 }
 
+.post-tags {
+  margin-left: 0;
+  padding-left: 0;
+  li {
+    list-style: none;
+    display: inline-block;
+    a {
+      color: #d2d1d1;
+      background-color: #282e40;
+      padding: 0 7px;
+      font-size: 12px;
+    }
+  }
+}
 
 .content {
   h1, h2, h3 {
@@ -108,10 +122,11 @@ p {
 }
 
 .dot {
-  color: var(--highlight-color);
-  font-size: 3rem;
-  padding-left: 5px;
-  font-family: var(--font-family-paragraph);
+  background-color: var(--highlight-color);
+  width: 7px;
+  height: 7px;
+  display: inline-block;
+  margin-left: 6px;
 }
 
 .row {

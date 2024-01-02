@@ -8,24 +8,47 @@
   {{ end }}
 
   <div class="intro">
-    <h1>{{ .Title }}{{ if .Site.Params.addDot }}<span class="dot">.</span>{{ end }}</h1>
+    <h1>{{ .Title }}{{ if .Site.Params.addDot }}<span class="dot"></span>{{ end }}</h1>
     <div class="intro-content">{{ .Content }}</div>
   </div>
 
-  <h3>Featured Posts</h3>
-  <ul>
-    {{ range .Site.Taxonomies.tags.postgresql }}
-      <li><a href="{{ .Page.RelPermalink }}">{{ .Page.Title }}</a></li>
+  <h2>Introduction <span class="dot"></span></h2>
+  <ul class="home-posts">
+    {{ range sort .Site.Taxonomies.tags.intro.Pages.ByDate }}
+      <li><a href="{{ .RelPermalink }}">{{ .Title }}</a></li>
     {{ end }}
   </ul>
 
-  {{ if .Site.Params.showPostsOnHomepage }}
-  {{ $paginator := .Paginate (where .Site.RegularPages "Type" "posts") }}
-    {{ range $paginator.Pages.ByDate }}
-      {{ .Render "summary" }}
+  <h2>Database and Table Management<span class="dot"></span></h2>
+  <ul class="home-posts">
+    {{ range .Site.Taxonomies.tags.manage.Pages.ByDate }}
+      <li><a href="{{ .RelPermalink }}">{{ .Title }}</a></li>
     {{ end }}
+  </ul>
+
+  <h2>Modifying Data<span class="dot"></span></h2>
+  <ul class="home-posts">
+    {{ range .Site.Taxonomies.tags.modify.Pages.ByDate }}
+      <li><a href="{{ .RelPermalink }}">{{ .Title }}</a></li>
+    {{ end }}
+  </ul>
+
+  <h2>Query and Filtering Data<span class="dot"></span></h2>
+  <ul class="home-posts">
+    {{ range .Site.Taxonomies.tags.query.Pages.ByDate }}
+      <li><a href="{{ .RelPermalink }}">{{ .Title }}</a></li>
+    {{ end }}
+  </ul>
+
+  <h2>Latest Posts<span class="dot"></span></h2>
+  <ul class="home-posts">
+    {{ $paginator := .Paginate (where .Site.RegularPages "Type" "posts") }}
+      {{ range $paginator.Pages }}
+        <li><a href="{{ .RelPermalink }}">{{ .Title }}</a></li>
+      {{ end }}
     {{ template "_internal/pagination.html" . }}
-  {{ end }}
+  </ul>
+
 
 {{ end }}
 

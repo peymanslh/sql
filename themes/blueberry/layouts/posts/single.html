@@ -7,7 +7,7 @@
       {{ partial "author.html" . }}
     {{ end }}
     <div class="intro">
-      <h1>{{ .Title }}{{ if .Site.Params.addDot }}<span class="dot">.</span>{{ end }}</h1>
+      <h1>{{ .Title }}{{ if .Site.Params.addDot }}<span class="dot"></span>{{ end }}</h1>
       {{ partial "tags.html" .}}
       {{ if .Params.image }}
       <img src="{{ .Params.image | relURL }}" />

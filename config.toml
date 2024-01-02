@@ -30,7 +30,7 @@ paginate = 30
 [taxonomies]
     tag = "tags"
 
-copyright = "2023"
+copyright = "2024"
 languageCode = "en-us"
 
 [Author]
