@@ -11,7 +11,7 @@ Create a new post: `hugo new --kind post posts/<post-name>.md`
 - [x] INSERT
 - [x] UPDATE
 - [x] DELETE
-- [ ] ORDER BY
+- [x] ORDER BY
 - [ ] GROUP BY
 - [ ] AND, OR, NOT
 - [ ] Operators
