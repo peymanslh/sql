@@ -1,5 +1,5 @@
 ---
-title: "Insert"
+title: "INSERT"
 date: 2024-01-01T19:43:54+03:30
 tags:
 - modify

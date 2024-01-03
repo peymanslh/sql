@@ -1,5 +1,5 @@
 ---
-title: "Order By"
+title: "ORDER BY"
 date: 2024-01-03T23:55:35+03:30
 tags:
 - query

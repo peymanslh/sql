@@ -1,5 +1,5 @@
 ---
-title: "Delete"
+title: "DELETE"
 date: 2024-01-01T20:40:45+03:30
 tags:
 - modify

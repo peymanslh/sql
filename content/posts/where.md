@@ -1,5 +1,5 @@
 ---
-title: "Where"
+title: "WHERE"
 date: 2023-12-30T23:17:01+03:30
 tags:
 - query

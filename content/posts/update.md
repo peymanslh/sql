@@ -1,5 +1,5 @@
 ---
-title: "Update"
+title: "UPDATE"
 date: 2024-01-01T20:11:38+03:30
 tags:
 - modify
