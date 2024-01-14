@@ -12,7 +12,7 @@ Create a new post: `hugo new --kind post posts/<post-name>.md`
 - [x] UPDATE
 - [x] DELETE
 - [x] ORDER BY
-- [ ] GROUP BY
+- [x] GROUP BY
 - [ ] AND, OR, NOT
 - [ ] Operators
 - [ ] AS (Alias)
