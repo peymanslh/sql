@@ -1,0 +1,49 @@
+<!doctype html><html lang=en><head><meta charset=utf-8><meta http-equiv=x-ua-compatible content="ie=edge"><title>AND, OR, NOT - SQL by example</title><meta name=viewport content="width=device-width,initial-scale=1"><link rel=icon href=https://peyman.blog/sql/favicon.png><link rel=alternate type=application/rss+xml href=https://peyman.blog/sql/index.xml title="SQL by example"><link rel=stylesheet href=../../css/style.min.b7a8f934af918fc60a41bae619210b3560306dbdbba86726567d6993bc1bc64c.css><meta property="og:title" content="AND, OR, NOT"><meta property="og:type" content="website"><meta property="og:url" content="https://peyman.blog/sql/posts/and-or-not/"><meta name=twitter:card content="summary"><meta name=twitter:site content="@_peymanslh"><meta name=twitter:creator content="@_peymanslh"><link rel=preconnect href=https://fonts.googleapis.com><link rel=preconnect href=https://fonts.gstatic.com crossorigin><link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:ital,wght@0,500;0,700;1,500&family=Libre+Caslon+Text:wght@700&family=Pridi:wght@300;400;600;700&display=swap" rel=stylesheet></head><body class="page page-blog-single"><div id=wrapper class=wrapper><div class=header><a class=header-logo href=https://peyman.blog/sql/>SQL by example</a><div class=menu-main><ul><li class=menu-item-about><a href=../../pages/about/>About</a></li><li class=menu-item-posts><a href=../../posts/>Posts</a></li></ul></div></div><div class=blog><div class=intro><h1>AND, OR, NOT<span class=dot></span></h1><ul class=post-tags><li><a href=https://peyman.blog/sql/tags/query/>query</a></li><li><a href=https://peyman.blog/sql/tags/postgresql/>postgresql</a></li></ul></div><div class=content><p>With the help of <code>AND</code>, <code>OR</code>, and <code>NOT</code> we can add more power to
+our query conditions.</p><div class=highlight><pre style=color:#d8dee9;background-color:#2e3440;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-sql data-lang=sql><span style=color:#616e87;font-style:italic>-- select all orders with product_id of 10 and delivered
+</span><span style=color:#616e87;font-style:italic>-- only select rows where both conditions are true
+</span><span style=color:#616e87;font-style:italic></span><span style=color:#81a1c1;font-weight:700>SELECT</span> <span style=color:#81a1c1>*</span>
+<span style=color:#81a1c1;font-weight:700>FROM</span> orders
+<span style=color:#81a1c1;font-weight:700>WHERE</span>
+  product_id <span style=color:#81a1c1>=</span> <span style=color:#a3be8c>&#39;10&#39;</span> <span style=color:#81a1c1;font-weight:700>AND</span>
+  delivered <span style=color:#81a1c1>=</span> <span style=color:#81a1c1;font-weight:700>true</span><span style=color:#eceff4>;</span>
+<span style=color:#616e87;font-style:italic>-- +-----+---------------------+--------------------------------------+------------+---------+----------+-------------+-----------+
+</span><span style=color:#616e87;font-style:italic>-- | id  | created_at          | order_code                           | product_id | user_id | quantity | total_price | delivered |
+</span><span style=color:#616e87;font-style:italic>-- |-----+---------------------+--------------------------------------+------------+---------+----------+-------------+-----------|
+</span><span style=color:#616e87;font-style:italic>-- | 113 | 2023-07-08 21:09:44 | 12f82968-46fc-4118-9c58-fb568c38fa4e | 10         | 343     | 1        | 445         | True      |
+</span><span style=color:#616e87;font-style:italic>-- | 121 | 2023-06-03 00:18:42 | 24d070f9-2e4b-4b41-8d76-c99167083405 | 10         | 239     | 8        | 3560        | True      |
+</span><span style=color:#616e87;font-style:italic>-- | 487 | 2023-07-04 06:34:56 | 23da1388-e818-48af-ab5b-bc14951a22e0 | 10         | 41      | 5        | 2225        | True      |
+</span><span style=color:#616e87;font-style:italic>-- | 774 | 2023-04-20 09:35:38 | 07bbf026-ef4f-4078-a919-48702af47cb0 | 10         | 67      | 3        | 1335        | True      |
+</span><span style=color:#616e87;font-style:italic>-- +-----+---------------------+--------------------------------------+------------+---------+----------+-------------+-----------+
+</span><span style=color:#616e87;font-style:italic></span>
+<span style=color:#616e87;font-style:italic>-- select all users where their first or last name is John
+</span><span style=color:#616e87;font-style:italic>-- select rows where only one of the conditions are true
+</span><span style=color:#616e87;font-style:italic></span><span style=color:#81a1c1;font-weight:700>SELECT</span> <span style=color:#81a1c1>*</span>
+<span style=color:#81a1c1;font-weight:700>FROM</span> users
+<span style=color:#81a1c1;font-weight:700>WHERE</span> first_name <span style=color:#81a1c1>=</span> <span style=color:#a3be8c>&#39;John&#39;</span> <span style=color:#81a1c1;font-weight:700>OR</span>
+last_name <span style=color:#81a1c1>=</span> <span style=color:#a3be8c>&#39;John&#39;</span><span style=color:#eceff4>;</span>
+<span style=color:#616e87;font-style:italic>-- +-----+---------------------+------------+-----------+------------------------------+-----------------+--------+
+</span><span style=color:#616e87;font-style:italic>-- | id  | datetime_joined     | first_name | last_name | email                        | city            | active |
+</span><span style=color:#616e87;font-style:italic>-- |-----+---------------------+------------+-----------+------------------------------+-----------------+--------|
+</span><span style=color:#616e87;font-style:italic>-- | 14  | 2022-12-18 03:47:51 | John       | Combs     | katherinewiley@myers.com     | Port Anthony    | True   |
+</span><span style=color:#616e87;font-style:italic>-- | 51  | 2022-07-05 12:04:27 | John       | Fritz     | darren27@gmail.com           | Masonborough    | True   |
+</span><span style=color:#616e87;font-style:italic>-- | 285 | 2021-11-17 01:40:06 | John       | Sanders   | ygordon@yahoo.com            | Erinfurt        | True   |
+</span><span style=color:#616e87;font-style:italic>-- ...
+</span><span style=color:#616e87;font-style:italic></span>
+<span style=color:#616e87;font-style:italic>-- select all products without the ones that their company
+</span><span style=color:#616e87;font-style:italic>-- name is &#39;Allen-Jones&#39;
+</span><span style=color:#616e87;font-style:italic></span><span style=color:#81a1c1;font-weight:700>SELECT</span>
+  created_at<span style=color:#eceff4>,</span>
+  product_code<span style=color:#eceff4>,</span>
+  name<span style=color:#eceff4>,</span>
+  company<span style=color:#eceff4>,</span>
+  price
+<span style=color:#81a1c1;font-weight:700>FROM</span> products
+<span style=color:#81a1c1;font-weight:700>WHERE</span> <span style=color:#81a1c1;font-weight:700>NOT</span> company <span style=color:#81a1c1>=</span> <span style=color:#a3be8c>&#39;Allen-Jones&#39;</span><span style=color:#eceff4>;</span>
+<span style=color:#616e87;font-style:italic>-- +---------------------+--------------+---------------+---------------------------------+-------+
+</span><span style=color:#616e87;font-style:italic>-- | created_at          | product_code | name          | company                         | price |
+</span><span style=color:#616e87;font-style:italic>-- |---------------------+--------------+---------------+---------------------------------+-------|
+</span><span style=color:#616e87;font-style:italic>-- | 2023-09-01 23:59:14 | 30248960     | teal paint    | Burke, Payne and Oliver         | 427   |
+</span><span style=color:#616e87;font-style:italic>-- | 2022-09-09 15:49:58 | 12996179     | olive paint   | Alexander Inc                   | 377   |
+</span><span style=color:#616e87;font-style:italic>-- | 2022-01-07 00:53:59 | 84201010     | olive paint   | Gray, Carson and Oneill         | 402   |
+</span><span style=color:#616e87;font-style:italic>-- ...
+</span></code></pre></div><p><a href=https://www.postgresql.org/docs/current/sql-select.html>PostgreSQL docs</a></p></div></div><div class=footer><div class=footer-copy>© 2024 SQL by example.</div><div class=footer-social><span class="social-icon social-icon-github"><a href=https://github.com/peymanslh/sql title=github target=_blank rel=noopener><img src=../../images/social/github.svg width=24 height=24 alt=github></a></span></div></div></div><script type=text/javascript src=../../js/bundle.min.1ff4c3efa6718e4b48bf69ba81bb9b232f6f3e1407b7ea6ce8e5a6fdaed5af56.js></script></body></html>
