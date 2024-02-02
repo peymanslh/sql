@@ -16,7 +16,7 @@ Create a new post: `hugo new --kind post posts/<post-name>.md`
 - [x] AND, OR, NOT
 - [ ] Operators
 - [ ] AS (Alias)
-- [ ] LIMIT
+- [x] LIMIT
 - [ ] Comments
 - [ ] SELECT DISTINCT
 - [ ] IN
