@@ -17,11 +17,11 @@ Create a new post: `hugo new --kind post posts/<post-name>.md`
 - [ ] Operators
 - [ ] AS (Alias)
 - [x] LIMIT
-- [ ] Comments
+- [x] Comments
 - [ ] SELECT DISTINCT
 - [ ] IN
 - [ ] LIKE
-- [ ] MIN, MAX
+- [x] MIN, MAX
 - [ ] COUNT
 - [ ] SUM
 - [ ] AVG
