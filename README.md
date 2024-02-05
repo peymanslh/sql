@@ -15,16 +15,16 @@ Create a new post: `hugo new --kind post posts/<post-name>.md`
 - [x] GROUP BY
 - [x] AND, OR, NOT
 - [ ] Operators
-- [ ] AS (Alias)
+- [x] AS (Alias)
 - [x] LIMIT
 - [x] Comments
 - [ ] SELECT DISTINCT
 - [ ] IN
 - [ ] LIKE
 - [x] MIN, MAX
-- [ ] COUNT
-- [ ] SUM
-- [ ] AVG
+- [x] COUNT
+- [x] SUM
+- [x] AVG
 - [ ] BETWEEN
 - [ ] ROUND
 - [ ] JOIN

@@ -4,6 +4,8 @@ date: 2024-02-03T15:49:57+03:30
 tags:
 - query
 - postgresql
+- aggregate
+- functions
 ---
 `MIN` returns the smallest value of a column.
 `MAX` returns the biggest value of a column.
