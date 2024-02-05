@@ -40,16 +40,6 @@
     {{ end }}
   </ul>
 
-  <h2>Latest Posts<span class="dot"></span></h2>
-  <ul class="home-posts">
-    {{ $paginator := .Paginate (where .Site.RegularPages "Type" "posts") }}
-      {{ range $paginator.Pages }}
-        <li><a href="{{ .RelPermalink }}">{{ .Title }}</a></li>
-      {{ end }}
-    {{ template "_internal/pagination.html" . }}
-  </ul>
-
-
 {{ end }}
 
 {{ define "footer_js" }}
