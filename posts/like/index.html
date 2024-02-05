@@ -1,0 +1,81 @@
+<!doctype html><html lang=en><head><meta charset=utf-8><meta http-equiv=x-ua-compatible content="ie=edge"><title>LIKE - SQL by example</title><meta name=viewport content="width=device-width,initial-scale=1"><link rel=icon href=https://peyman.blog/sql/favicon.png><link rel=alternate type=application/rss+xml href=https://peyman.blog/sql/index.xml title="SQL by example"><link rel=stylesheet href=../../css/style.min.b7a8f934af918fc60a41bae619210b3560306dbdbba86726567d6993bc1bc64c.css><meta property="og:title" content="LIKE"><meta property="og:type" content="website"><meta property="og:url" content="https://peyman.blog/sql/posts/like/"><meta name=twitter:card content="summary"><meta name=twitter:site content="@_peymanslh"><meta name=twitter:creator content="@_peymanslh"><link rel=preconnect href=https://fonts.googleapis.com><link rel=preconnect href=https://fonts.gstatic.com crossorigin><link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:ital,wght@0,500;0,700;1,500&family=Libre+Caslon+Text:wght@700&family=Pridi:wght@300;400;600;700&display=swap" rel=stylesheet></head><body class="page page-blog-single"><div id=wrapper class=wrapper><div class=header><a class=header-logo href=https://peyman.blog/sql/>SQL by example</a><div class=menu-main><ul><li class=menu-item-about><a href=../../pages/about/>About</a></li><li class=menu-item-posts><a href=../../posts/>Posts</a></li></ul></div></div><div class=blog><div class=intro><h1>LIKE<span class=dot></span></h1><ul class=post-tags><li><a href=https://peyman.blog/sql/tags/query/>query</a></li><li><a href=https://peyman.blog/sql/tags/postgresql/>postgresql</a></li></ul></div><div class=content><p><code>LIKE</code> is use in <code>WHERE</code> condition to find data based on a pattern.<br>There are two wildcards that we can use with <code>LIKE</code>:</p><ul><li><code>%</code>: represents zero, one, or multiple characters</li><li><code>_</code>: represents one, single character.</li></ul><div class=highlight><pre style=color:#d8dee9;background-color:#2e3440;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-sql data-lang=sql><span style=color:#616e87;font-style:italic>-- find all users with first_name of John
+</span><span style=color:#616e87;font-style:italic></span><span style=color:#81a1c1;font-weight:700>SELECT</span>
+  id<span style=color:#eceff4>,</span>
+  first_name<span style=color:#eceff4>,</span>
+  last_name
+<span style=color:#81a1c1;font-weight:700>FROM</span> users
+<span style=color:#81a1c1;font-weight:700>WHERE</span> first_name <span style=color:#81a1c1;font-weight:700>LIKE</span> <span style=color:#a3be8c>&#39;John&#39;</span><span style=color:#eceff4>;</span>
+<span style=color:#616e87;font-style:italic>-- +-----+------------+-----------+
+</span><span style=color:#616e87;font-style:italic>-- | id  | first_name | last_name |
+</span><span style=color:#616e87;font-style:italic>-- |-----+------------+-----------|
+</span><span style=color:#616e87;font-style:italic>-- | 14  | John       | Combs     |
+</span><span style=color:#616e87;font-style:italic>-- | 51  | John       | Fritz     |
+</span><span style=color:#616e87;font-style:italic>-- | 285 | John       | Sanders   |
+</span><span style=color:#616e87;font-style:italic>-- | 445 | John       | Wise      |
+</span><span style=color:#616e87;font-style:italic>-- | 485 | John       | Peterson  |
+</span><span style=color:#616e87;font-style:italic>-- | 501 | John       | Moreno    |
+</span><span style=color:#616e87;font-style:italic>-- | 502 | John       | Moreno    |
+</span><span style=color:#616e87;font-style:italic>-- +-----+------------+-----------+
+</span><span style=color:#616e87;font-style:italic></span>
+<span style=color:#616e87;font-style:italic>-- find all users that their first_name starts with A
+</span><span style=color:#616e87;font-style:italic></span><span style=color:#81a1c1;font-weight:700>SELECT</span>
+  id<span style=color:#eceff4>,</span>
+  first_name<span style=color:#eceff4>,</span>
+  last_name
+<span style=color:#81a1c1;font-weight:700>FROM</span> users
+<span style=color:#81a1c1;font-weight:700>WHERE</span> first_name <span style=color:#81a1c1;font-weight:700>LIKE</span> <span style=color:#a3be8c>&#39;A%&#39;</span><span style=color:#eceff4>;</span>
+<span style=color:#616e87;font-style:italic>-- +-----+------------+-----------+
+</span><span style=color:#616e87;font-style:italic>-- | id  | first_name | last_name |
+</span><span style=color:#616e87;font-style:italic>-- |-----+------------+-----------|
+</span><span style=color:#616e87;font-style:italic>-- | 13  | Andrew     | Mercado   |
+</span><span style=color:#616e87;font-style:italic>-- | 42  | Adrian     | Ewing     |
+</span><span style=color:#616e87;font-style:italic>-- | 74  | Audrey     | Edwards   |
+</span><span style=color:#616e87;font-style:italic></span>
+<span style=color:#616e87;font-style:italic>-- find all users that their first_name ends with n
+</span><span style=color:#616e87;font-style:italic></span><span style=color:#81a1c1;font-weight:700>SELECT</span>
+  id<span style=color:#eceff4>,</span>
+  first_name<span style=color:#eceff4>,</span>
+  last_name
+<span style=color:#81a1c1;font-weight:700>FROM</span> users
+<span style=color:#81a1c1;font-weight:700>WHERE</span> first_name <span style=color:#81a1c1;font-weight:700>LIKE</span> <span style=color:#a3be8c>&#39;%n&#39;</span><span style=color:#eceff4>;</span>
+<span style=color:#616e87;font-style:italic>-- +-----+------------+-----------+
+</span><span style=color:#616e87;font-style:italic>-- | id  | first_name | last_name |
+</span><span style=color:#616e87;font-style:italic>-- |-----+------------+-----------|
+</span><span style=color:#616e87;font-style:italic>-- | 1   | Carmen     | Malone    |
+</span><span style=color:#616e87;font-style:italic>-- | 3   | Brandon    | Jenkins   |
+</span><span style=color:#616e87;font-style:italic>-- | 7   | Jocelyn    | Williams  |
+</span><span style=color:#616e87;font-style:italic>-- | 10  | Steven     | Perez     |
+</span><span style=color:#616e87;font-style:italic>-- ...
+</span><span style=color:#616e87;font-style:italic></span>
+<span style=color:#616e87;font-style:italic>-- find all users that their first_name contains n
+</span><span style=color:#616e87;font-style:italic></span><span style=color:#81a1c1;font-weight:700>SELECT</span>
+  id<span style=color:#eceff4>,</span>
+  first_name<span style=color:#eceff4>,</span>
+  last_name
+<span style=color:#81a1c1;font-weight:700>FROM</span> users
+<span style=color:#81a1c1;font-weight:700>WHERE</span> first_name <span style=color:#81a1c1;font-weight:700>LIKE</span> <span style=color:#a3be8c>&#39;%n%&#39;</span><span style=color:#eceff4>;</span>
+<span style=color:#616e87;font-style:italic>-- +-----+------------+-----------+
+</span><span style=color:#616e87;font-style:italic>-- | id  | first_name | last_name |
+</span><span style=color:#616e87;font-style:italic>-- |-----+------------+-----------|
+</span><span style=color:#616e87;font-style:italic>-- | 1   | Carmen     | Malone    |
+</span><span style=color:#616e87;font-style:italic>-- | 2   | Stephanie  | Wallace   |
+</span><span style=color:#616e87;font-style:italic>-- | 3   | Brandon    | Jenkins   |
+</span><span style=color:#616e87;font-style:italic>-- | 5   | Jennifer   | Smith     |
+</span><span style=color:#616e87;font-style:italic>-- ...
+</span><span style=color:#616e87;font-style:italic></span>
+<span style=color:#616e87;font-style:italic>-- find all users that their first_name is 4 character and ends with arl
+</span><span style=color:#616e87;font-style:italic></span><span style=color:#81a1c1;font-weight:700>SELECT</span>
+  id<span style=color:#eceff4>,</span>
+  first_name<span style=color:#eceff4>,</span>
+  last_name
+<span style=color:#81a1c1;font-weight:700>FROM</span> users
+<span style=color:#81a1c1;font-weight:700>WHERE</span> first_name <span style=color:#81a1c1;font-weight:700>LIKE</span> <span style=color:#a3be8c>&#39;_arl&#39;</span><span style=color:#eceff4>;</span>
+<span style=color:#616e87;font-style:italic>-- +-----+------------+------------+
+</span><span style=color:#616e87;font-style:italic>-- | id  | first_name | last_name  |
+</span><span style=color:#616e87;font-style:italic>-- |-----+------------+------------|
+</span><span style=color:#616e87;font-style:italic>-- | 59  | Earl       | Livingston |
+</span><span style=color:#616e87;font-style:italic>-- | 210 | Carl       | Gonzalez   |
+</span><span style=color:#616e87;font-style:italic>-- | 382 | Karl       | Pierce     |
+</span><span style=color:#616e87;font-style:italic>-- | 412 | Earl       | Owens      |
+</span><span style=color:#616e87;font-style:italic>-- +-----+------------+------------+
+</span></code></pre></div><p><a href=https://www.postgresql.org/docs/16/functions-matching.html#FUNCTIONS-LIKE>PostgreSQL docs</a></p></div></div><div class=footer><div class=footer-copy>© 2024 SQL by example.</div><div class=footer-social><span class="social-icon social-icon-github"><a href=https://github.com/peymanslh/sql title=github target=_blank rel=noopener><img src=../../images/social/github.svg width=24 height=24 alt=github></a></span></div></div></div><script type=text/javascript src=../../js/bundle.min.1ff4c3efa6718e4b48bf69ba81bb9b232f6f3e1407b7ea6ce8e5a6fdaed5af56.js></script></body></html>

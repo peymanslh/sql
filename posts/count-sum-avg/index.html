@@ -1,0 +1,62 @@
+<!doctype html><html lang=en><head><meta charset=utf-8><meta http-equiv=x-ua-compatible content="ie=edge"><title>COUNT, SUM, AVG - SQL by example</title><meta name=viewport content="width=device-width,initial-scale=1"><link rel=icon href=https://peyman.blog/sql/favicon.png><link rel=alternate type=application/rss+xml href=https://peyman.blog/sql/index.xml title="SQL by example"><link rel=stylesheet href=../../css/style.min.b7a8f934af918fc60a41bae619210b3560306dbdbba86726567d6993bc1bc64c.css><meta property="og:title" content="COUNT, SUM, AVG"><meta property="og:type" content="website"><meta property="og:url" content="https://peyman.blog/sql/posts/count-sum-avg/"><meta name=twitter:card content="summary"><meta name=twitter:site content="@_peymanslh"><meta name=twitter:creator content="@_peymanslh"><link rel=preconnect href=https://fonts.googleapis.com><link rel=preconnect href=https://fonts.gstatic.com crossorigin><link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:ital,wght@0,500;0,700;1,500&family=Libre+Caslon+Text:wght@700&family=Pridi:wght@300;400;600;700&display=swap" rel=stylesheet></head><body class="page page-blog-single"><div id=wrapper class=wrapper><div class=header><a class=header-logo href=https://peyman.blog/sql/>SQL by example</a><div class=menu-main><ul><li class=menu-item-about><a href=../../pages/about/>About</a></li><li class=menu-item-posts><a href=../../posts/>Posts</a></li></ul></div></div><div class=blog><div class=intro><h1>COUNT, SUM, AVG<span class=dot></span></h1><ul class=post-tags><li><a href=https://peyman.blog/sql/tags/query/>query</a></li><li><a href=https://peyman.blog/sql/tags/postgresql/>postgresql</a></li><li><a href=https://peyman.blog/sql/tags/aggregate/>aggregate</a></li><li><a href=https://peyman.blog/sql/tags/functions/>functions</a></li></ul></div><div class=content><p><code>COUNT</code> returns the number of rows for a column.</p><div class=highlight><pre style=color:#d8dee9;background-color:#2e3440;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-sql data-lang=sql><span style=color:#616e87;font-style:italic>-- return the number of all users
+</span><span style=color:#616e87;font-style:italic></span><span style=color:#81a1c1;font-weight:700>SELECT</span> <span style=color:#81a1c1;font-weight:700>COUNT</span><span style=color:#eceff4>(</span><span style=color:#81a1c1>*</span><span style=color:#eceff4>)</span> <span style=color:#81a1c1;font-weight:700>FROM</span> users<span style=color:#eceff4>;</span>
+<span style=color:#616e87;font-style:italic>-- +-------+
+</span><span style=color:#616e87;font-style:italic>-- | count |
+</span><span style=color:#616e87;font-style:italic>-- |-------|
+</span><span style=color:#616e87;font-style:italic>-- | 502   |
+</span><span style=color:#616e87;font-style:italic>-- +-------+
+</span><span style=color:#616e87;font-style:italic></span>
+<span style=color:#616e87;font-style:italic>-- find the number of orders by each user
+</span><span style=color:#616e87;font-style:italic></span><span style=color:#81a1c1;font-weight:700>SELECT</span>
+  <span style=color:#81a1c1;font-weight:700>COUNT</span><span style=color:#eceff4>(</span><span style=color:#81a1c1>*</span><span style=color:#eceff4>),</span>
+  user_id
+<span style=color:#81a1c1;font-weight:700>FROM</span> orders
+<span style=color:#81a1c1;font-weight:700>GROUP</span> <span style=color:#81a1c1;font-weight:700>BY</span> user_id
+<span style=color:#81a1c1;font-weight:700>ORDER</span> <span style=color:#81a1c1;font-weight:700>BY</span> user_id<span style=color:#eceff4>;</span>
+<span style=color:#616e87;font-style:italic>-- +-------+---------+
+</span><span style=color:#616e87;font-style:italic>-- | count | user_id |
+</span><span style=color:#616e87;font-style:italic>-- |-------+---------|
+</span><span style=color:#616e87;font-style:italic>-- | 2     | 1       |
+</span><span style=color:#616e87;font-style:italic>-- | 1     | 2       |
+</span><span style=color:#616e87;font-style:italic>-- | 3     | 3       |
+</span><span style=color:#616e87;font-style:italic>-- | 4     | 4       |
+</span><span style=color:#616e87;font-style:italic>-- ...
+</span></code></pre></div><p><code>SUM</code> returns the sum of a numeric column.</p><div class=highlight><pre style=color:#d8dee9;background-color:#2e3440;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-sql data-lang=sql><span style=color:#616e87;font-style:italic>-- returns the sum of all of our orders
+</span><span style=color:#616e87;font-style:italic></span><span style=color:#81a1c1;font-weight:700>SELECT</span> <span style=color:#81a1c1;font-weight:700>SUM</span><span style=color:#eceff4>(</span>total_price<span style=color:#eceff4>)</span> <span style=color:#81a1c1;font-weight:700>FROM</span> orders<span style=color:#eceff4>;</span>
+<span style=color:#616e87;font-style:italic>-- +---------+
+</span><span style=color:#616e87;font-style:italic>-- | sum     |
+</span><span style=color:#616e87;font-style:italic>-- |---------|
+</span><span style=color:#616e87;font-style:italic>-- | 2095239 |
+</span><span style=color:#616e87;font-style:italic>-- +---------+
+</span><span style=color:#616e87;font-style:italic></span>
+<span style=color:#616e87;font-style:italic>-- get the number of orders and average total price of them for user with id of 10
+</span><span style=color:#616e87;font-style:italic></span><span style=color:#81a1c1;font-weight:700>SELECT</span>
+  <span style=color:#81a1c1;font-weight:700>COUNT</span><span style=color:#eceff4>(</span>id<span style=color:#eceff4>),</span>
+  <span style=color:#81a1c1;font-weight:700>AVG</span><span style=color:#eceff4>(</span>total_price<span style=color:#eceff4>)</span>
+<span style=color:#81a1c1;font-weight:700>FROM</span> orders
+<span style=color:#81a1c1;font-weight:700>WHERE</span> user_id <span style=color:#81a1c1>=</span> <span style=color:#b48ead>10</span><span style=color:#eceff4>;</span>
+<span style=color:#616e87;font-style:italic>-- +-------+-----------------------+
+</span><span style=color:#616e87;font-style:italic>-- | count | avg                   |
+</span><span style=color:#616e87;font-style:italic>-- |-------+-----------------------|
+</span><span style=color:#616e87;font-style:italic>-- | 4     | 1771.0000000000000000 |
+</span><span style=color:#616e87;font-style:italic>-- +-------+-----------------------+
+</span></code></pre></div><p><code>AVG</code> returns the average of a numeric column.</p><div class=highlight><pre style=color:#d8dee9;background-color:#2e3440;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-sql data-lang=sql><span style=color:#616e87;font-style:italic>-- returns the average total_price of all of our orders
+</span><span style=color:#616e87;font-style:italic></span><span style=color:#81a1c1;font-weight:700>SELECT</span> <span style=color:#81a1c1;font-weight:700>AVG</span><span style=color:#eceff4>(</span>total_price<span style=color:#eceff4>)</span> <span style=color:#81a1c1;font-weight:700>FROM</span> orders<span style=color:#eceff4>;</span>
+<span style=color:#616e87;font-style:italic>-- +-----------------------+
+</span><span style=color:#616e87;font-style:italic>-- | avg                   |
+</span><span style=color:#616e87;font-style:italic>-- |-----------------------|
+</span><span style=color:#616e87;font-style:italic>-- | 1904.7627272727272727 |
+</span><span style=color:#616e87;font-style:italic>-- +-----------------------+
+</span><span style=color:#616e87;font-style:italic></span>
+<span style=color:#616e87;font-style:italic>-- get the number of orders and sum of total price of them for user with id of 10
+</span><span style=color:#616e87;font-style:italic></span><span style=color:#81a1c1;font-weight:700>SELECT</span>
+  <span style=color:#81a1c1;font-weight:700>COUNT</span><span style=color:#eceff4>(</span>id<span style=color:#eceff4>),</span>
+  <span style=color:#81a1c1;font-weight:700>SUM</span><span style=color:#eceff4>(</span>total_price<span style=color:#eceff4>)</span>
+<span style=color:#81a1c1;font-weight:700>FROM</span> orders
+<span style=color:#81a1c1;font-weight:700>WHERE</span> user_id <span style=color:#81a1c1>=</span> <span style=color:#b48ead>10</span><span style=color:#eceff4>;</span>
+<span style=color:#616e87;font-style:italic>-- +-------+------+
+</span><span style=color:#616e87;font-style:italic>-- | count | sum  |
+</span><span style=color:#616e87;font-style:italic>-- |-------+------|
+</span><span style=color:#616e87;font-style:italic>-- | 4     | 7084 |
+</span><span style=color:#616e87;font-style:italic>-- +-------+------+
+</span></code></pre></div><p><a href=https://www.postgresql.org/docs/current/tutorial-agg.html>PostgreSQL docs</a></p></div></div><div class=footer><div class=footer-copy>© 2024 SQL by example.</div><div class=footer-social><span class="social-icon social-icon-github"><a href=https://github.com/peymanslh/sql title=github target=_blank rel=noopener><img src=../../images/social/github.svg width=24 height=24 alt=github></a></span></div></div></div><script type=text/javascript src=../../js/bundle.min.1ff4c3efa6718e4b48bf69ba81bb9b232f6f3e1407b7ea6ce8e5a6fdaed5af56.js></script></body></html>
