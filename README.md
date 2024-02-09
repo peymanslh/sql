@@ -14,16 +14,16 @@ Install extended version of hugo.
 - [x] ORDER BY
 - [x] GROUP BY
 - [x] AND, OR, NOT
-- [x] AS (Alias)
 - [x] LIMIT
 - [x] Comments
-- [x] LIKE
 - [x] MIN, MAX
 - [x] COUNT
 - [x] SUM
 - [x] AVG
-- [ ] SELECT DISTINCT
-- [ ] IN
+- [x] AS (Alias)
+- [x] LIKE
+- [x] SELECT DISTINCT
+- [x] IN
 - [ ] Operators
 - [ ] BETWEEN
 - [ ] ROUND
