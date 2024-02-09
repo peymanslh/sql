@@ -1,0 +1,38 @@
+<!doctype html><html lang=en><head><meta charset=utf-8><meta http-equiv=x-ua-compatible content="ie=edge"><title>BETWEEN - SQL by example</title><meta name=viewport content="width=device-width,initial-scale=1"><link rel=icon href=https://peyman.blog/sql/favicon.png><link rel=alternate type=application/rss+xml href=https://peyman.blog/sql/index.xml title="SQL by example"><link rel=stylesheet href=../../css/style.min.b7a8f934af918fc60a41bae619210b3560306dbdbba86726567d6993bc1bc64c.css><meta property="og:title" content="BETWEEN"><meta property="og:type" content="website"><meta property="og:url" content="https://peyman.blog/sql/posts/between/"><meta name=twitter:card content="summary"><meta name=twitter:site content="@_peymanslh"><meta name=twitter:creator content="@_peymanslh"><link rel=preconnect href=https://fonts.googleapis.com><link rel=preconnect href=https://fonts.gstatic.com crossorigin><link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:ital,wght@0,500;0,700;1,500&family=Libre+Caslon+Text:wght@700&family=Pridi:wght@300;400;600;700&display=swap" rel=stylesheet></head><body class="page page-blog-single"><div id=wrapper class=wrapper><div class=header><a class=header-logo href=https://peyman.blog/sql/>SQL by example</a><div class=menu-main><ul><li class=menu-item-about><a href=../../pages/about/>About</a></li><li class=menu-item-posts><a href=../../posts/>Posts</a></li></ul></div></div><div class=blog><div class=intro><h1>BETWEEN<span class=dot></span></h1><ul class=post-tags><li><a href=https://peyman.blog/sql/tags/query/>query</a></li><li><a href=https://peyman.blog/sql/tags/postgresql/>postgresql</a></li></ul></div><div class=content><p><code>BETWEEN</code> is use to check if a value is greater and less than two other values.</p><div class=highlight><pre style=color:#d8dee9;background-color:#2e3440;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-sql data-lang=sql><span style=color:#616e87;font-style:italic>-- get all orders between two dates
+</span><span style=color:#616e87;font-style:italic></span><span style=color:#81a1c1;font-weight:700>SELECT</span>
+  id<span style=color:#eceff4>,</span>
+  created_at<span style=color:#eceff4>,</span>
+  order_code
+<span style=color:#81a1c1;font-weight:700>FROM</span> orders
+<span style=color:#81a1c1;font-weight:700>WHERE</span>
+  created_at <span style=color:#81a1c1;font-weight:700>BETWEEN</span> <span style=color:#a3be8c>&#39;2023-06-17 15:38:12&#39;</span> <span style=color:#81a1c1;font-weight:700>AND</span> <span style=color:#a3be8c>&#39;2023-07-17 15:38:12&#39;</span><span style=color:#eceff4>;</span>
+<span style=color:#616e87;font-style:italic>-- +------+---------------------+--------------------------------------+
+</span><span style=color:#616e87;font-style:italic>-- | id   | created_at          | order_code                           |
+</span><span style=color:#616e87;font-style:italic>-- |------+---------------------+--------------------------------------|
+</span><span style=color:#616e87;font-style:italic>-- | 13   | 2023-07-08 21:50:22 | cbb06fd6-8060-483e-9e74-a0a3342cdbcd |
+</span><span style=color:#616e87;font-style:italic>-- | 19   | 2023-06-17 15:38:12 | eb5b7b14-87ca-4cc5-8d83-3b929bc46b24 |
+</span><span style=color:#616e87;font-style:italic>-- | 34   | 2023-07-03 13:39:39 | 36003e18-08bb-49ca-8dc4-ebb7ea96e9dd |
+</span><span style=color:#616e87;font-style:italic>-- | 36   | 2023-07-14 21:38:56 | 31c0ec36-ce5f-4892-96e6-90593d2f50c6 |
+</span><span style=color:#616e87;font-style:italic>-- ...
+</span><span style=color:#616e87;font-style:italic></span>
+<span style=color:#616e87;font-style:italic>-- get all orders that their quantity is between 3 and 5
+</span><span style=color:#616e87;font-style:italic></span><span style=color:#81a1c1;font-weight:700>SELECT</span>
+  id<span style=color:#eceff4>,</span>
+  created_at<span style=color:#eceff4>,</span>
+  order_code<span style=color:#eceff4>,</span>
+  quantity
+<span style=color:#81a1c1;font-weight:700>FROM</span> orders
+<span style=color:#81a1c1;font-weight:700>WHERE</span> quantity <span style=color:#81a1c1;font-weight:700>BETWEEN</span> <span style=color:#b48ead>3</span> <span style=color:#81a1c1;font-weight:700>AND</span> <span style=color:#b48ead>5</span><span style=color:#eceff4>;</span>
+<span style=color:#616e87;font-style:italic>-- +------+---------------------+--------------------------------------+----------+
+</span><span style=color:#616e87;font-style:italic>-- | id   | created_at          | order_code                           | quantity |
+</span><span style=color:#616e87;font-style:italic>-- |------+---------------------+--------------------------------------+----------|
+</span><span style=color:#616e87;font-style:italic>-- | 4    | 2023-09-11 19:20:27 | c16fa5cd-bd61-4771-9b52-fddc8adb8190 | 3        |
+</span><span style=color:#616e87;font-style:italic>-- | 5    | 2023-07-24 00:49:53 | fb6c3f59-eca6-4827-8d16-60d56bae3a5b | 5        |
+</span><span style=color:#616e87;font-style:italic>-- | 6    | 2023-08-03 21:05:06 | c59628e4-9c10-44ef-a423-cd01edb73580 | 5        |
+</span><span style=color:#616e87;font-style:italic>-- | 9    | 2022-11-05 19:07:36 | 3a86364b-1d65-4514-9926-f8efb75752b3 | 3        |
+</span><span style=color:#616e87;font-style:italic>-- | 10   | 2023-07-28 03:23:57 | 42a8eff9-1c77-4527-9b5b-3eefba1da7f6 | 5        |
+</span><span style=color:#616e87;font-style:italic>-- | 12   | 2022-12-16 11:03:44 | 1b873d80-31d0-4820-b458-d85de2b4e369 | 5        |
+</span><span style=color:#616e87;font-style:italic>-- | 13   | 2023-07-08 21:50:22 | cbb06fd6-8060-483e-9e74-a0a3342cdbcd | 5        |
+</span><span style=color:#616e87;font-style:italic>-- | 16   | 2022-10-07 16:53:04 | c2fbf440-9375-4a03-8b05-e9bff77867ea | 4        |
+</span><span style=color:#616e87;font-style:italic>-- ...
+</span></code></pre></div></div></div><div class=footer><div class=footer-copy>© 2024 SQL by example.</div><div class=footer-social><span class="social-icon social-icon-github"><a href=https://github.com/peymanslh/sql title=github target=_blank rel=noopener><img src=../../images/social/github.svg width=24 height=24 alt=github></a></span></div></div></div><script type=text/javascript src=../../js/bundle.min.1ff4c3efa6718e4b48bf69ba81bb9b232f6f3e1407b7ea6ce8e5a6fdaed5af56.js></script></body></html>
