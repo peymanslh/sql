@@ -24,9 +24,7 @@ Install extended version of hugo.
 - [x] LIKE
 - [x] SELECT DISTINCT
 - [x] IN
-- [ ] Operators
-- [ ] BETWEEN
-- [ ] ROUND
+- [x] BETWEEN
 - [ ] JOIN
 - [ ] INNER JOIN
 - [ ] LEFT JOIN
@@ -37,6 +35,7 @@ Install extended version of hugo.
 - [ ] WITH
 - [ ] HAVING
 - [ ] EXISTS
+- [ ] ROUND
 - [ ] ANY
 - [ ] ALL
 - [ ] CASE
@@ -44,6 +43,7 @@ Install extended version of hugo.
 - [ ] ALTER TABLE
 - [ ] TRUNCATE
 - [ ] SIMILAR TO https://www.postgresql.org/docs/16/functions-matching.html
+- [ ] Operators
 
 - [ ] Constraints
 - [ ] Unique
